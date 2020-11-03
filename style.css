@@ -1,0 +1,74 @@
+body {
+  margin: 0;
+  background-color: gainsboro;
+}
+h1 {
+  margin: 0;
+  padding: 16px;
+  text-align: center;
+  background-color: #353535;
+  color: white;
+  font-family: sans-serif;
+}
+h2 {
+  font-size: 20px;
+}
+h3 {
+  font-size: 12px;
+  font-weight: bold;
+}
+p {
+  font-size: 12px;
+}
+
+.flexContainer {
+  display: flex;
+  max-width: 950px;
+  margin: auto;
+}
+
+.searchColumn {
+  padding: 16px;
+  width: 200px;
+  border: 1 solid gray;
+}
+.searchColumn .searchHistoryContainer {
+  background-color: white;
+}
+
+.searchColumn > input {
+  width: 132px;
+}
+
+.reportColumn {
+  padding: 16px;
+  flex: 1;
+}
+
+.todaysForecastContainer {
+  padding: 16px;
+  border: solid black 1px;
+  border-radius: 4px;
+}
+
+.multiForecastContainer {
+}
+
+.forecastCardsContainer {
+  display: flex;
+}
+
+.forecastCard {
+  flex: 1;
+  padding: 8px;
+  background-color: rgb(73, 133, 237);
+  color: white;
+  border-radius: 4px;
+  margin: 0 8px;
+}
+.forecastCard:first-child {
+  margin-left: 0;
+}
+.forecastCard:last-child {
+  margin-right: 0;
+}

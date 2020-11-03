@@ -20,7 +20,7 @@
       <div class="searchColumn">
         <div>Search for a City:</div>
         <input type="text" />
-        <button onClick="handleCitySearch()">
+        <button class="handleCitySearch">
           <i class="fa fa-search"></i>
         </button>
         <div class="searchHistoryContainer">
@@ -30,7 +30,7 @@
       </div>
       <div class="reportColumn">
         <div class="todaysForecastContainer">
-          <h2>Alanta (M/DD/YYYY) icon</h2>
+          <h2>Current City {import from ajax} (M/DD/YYYY) icon</h2>
           <p>Temperature: {import from ajax}</p>
           <p>Humidity: {import from ajax}</p>
           <p>Wind Speed: {import from ajax}</p>

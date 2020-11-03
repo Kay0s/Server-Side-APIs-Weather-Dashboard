@@ -22,7 +22,7 @@ function createQuery(cityName) {
     console.log("I am whole data: ");
     console.log(data);
     let query2URL =
-      "https://api.openweathermap.org/2.5/uvi?lat=" +
+      "https://api.openweathermap.org/data/2.5/onecall?lat=" +
       data.coord.lat +
       "&lon=" +
       data.coord.lon +
@@ -31,11 +31,14 @@ function createQuery(cityName) {
     $.ajax({
       url: query2URL,
       method: "GET",
-    }).then(function (uvData) {
-      console.log("I am uv data: ");
-      console.log(uvData);
+    }).then(function (uvExtendedData) {
+      console.log("I am uv and extended data: ");
+      console.log(uvExtendedData);
     });
   });
 }
 
-createQuery("los+angeles");
+$(".handleCitySearch").on("click", function (event) {
+  event.preventDefault();
+  createQuery();
+});

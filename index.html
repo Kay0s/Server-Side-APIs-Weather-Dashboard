@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Weather Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="banner" style="background-color: gray; color: white">
+        <h1 class="text-center"> <strong>Weather Dashboard</strong></h1>
+      </div>
+      <div class="row">
+        <div class="col-sm-4"></div>
+          <br />
+          <div class="card">
+            <div class="card-header">
+              <strong> Search for a City:</strong>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="search-term"
+                /><button type="submit" class="btn btn-primary" id="run-search">
+                  <i class="fa fa-search"></i>
+                </button>
+                <div class="card-body">
+                  <form role="form">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="search-history1"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="search-history2"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="search-history3"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="search-history4"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="search-history5"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="search-history6"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="search-history7"
+                      />
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="search-history8"
+                      />
+                    </div>
+                  </form>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="card-group">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5
+                              class="card-title"
+                              id="current-city"
+                              id="current-time-date"
+                              id="current-icon"
+                            >
+                              Current City
+                            </h5>
+                            <p class="card-text" id="current-temp">Temperature:</p>
+                            <p class="card-text" id="current-humidity">
+                              Humidity
+                            </p>
+                            <p class="card-text" id="current-wind">Wind Speed:</p>
+                            <p class="card-text" id="uv-index">UV Index</p>
+                          </div>
+    <div class="card-deck">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <h6 class="card-title">5-Day Forecast:</h6>
+      <div class="card bg-primary">
+        <div class="card-body text-center">
+            <p class="card-text" id="day1-date">Day1 Date</p>
+            <p class="card-text" id="day1-weatherIcon">Day1 weatherIcon</p>
+            <p class="card-text" id="day1-temp">Temp:</p>
+            <p class="card-text" id="day1-humidity">Humidity:</p>
+        </div>
+      </div>
+      <div class="card bg-primary">
+        <div class="card-body text-center">
+            <p class="card-text" id="day2-date">Day2 Date</p>
+            <p class="card-text" id="day2-weatherIcon">Day2 weatherIcon</p>
+            <p class="card-text" id="day2-temp">Temp:</p>
+            <p class="card-text" id="day2-humidity">Humidity:</p>
+        </div>
+      </div>
+      <div class="card bg-primary">
+        <div class="card-body text-center">
+            <p class="card-text" id="day3-date">Day3 Date</p>
+            <p class="card-text" id="day3-weatherIcon">Day3 weatherIcon</p>
+            <p class="card-text" id="day3-temp">Temp:</p>
+            <p class="card-text" id="day3-humidity">Humidity:</p>
+        </div>
+      </div>
+      <div class="card bg-primary">
+        <div class="card-body text-center">
+            <p class="card-text" id="day4-date">Day4 Date</p>
+            <p class="card-text" id="day4-weatherIcon">Day4 weatherIcon</p>
+            <p class="card-text" id="day4-temp">Temp:</p>
+            <p class="card-text" id="day4-humidity">Humidity:</p>
+        </div>
+      </div>
+      <div class="card bg-primary">
+        <div class="card-body text-center">
+            <p class="card-text" id="day5-date">Day5 Date</p>
+            <p class="card-text" id="day5-weatherIcon">Day5 weatherIcon</p>
+            <p class="card-text" id="day5-temp">Temp:</p>
+            <p class="card-text" id="day5-humidity">Humidity:</p>
+    </div>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

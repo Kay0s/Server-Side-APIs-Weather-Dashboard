@@ -30,15 +30,19 @@
       </div>
       <div class="reportColumn">
         <div class="todaysForecastContainer">
-          <h2>
-            Current City {import from ajax} (M/DD/YYYY) <img src="icon" />
+          <h2 class="currentCity">
+            Current City {import from ajax}
+            <span class="currentCityDate">(M/DD/YYYY)</span>
+            <!-- <img class="currentCityIcon" src="icon" /> -->
           </h2>
-          <p>Temperature: {import from ajax}</p>
-          <p>Humidity: {import from ajax}</p>
-          <p>Wind Speed: {import from ajax}</p>
+          <p class="currentCityTemp">Temperature: {import from ajax}</p>
+          <p class="currentCityHumidity">Humidity: {import from ajax}</p>
+          <p class="currentCityWindSpeed">Wind Speed: {import from ajax}</p>
           <p>
             UV Index:
-            <span>{import from ajax, need to color code span}</span>
+            <span class="currentCityUVIndex"
+              >{import from ajax, need to color code span}</span
+            >
           </p>
         </div>
         <div class="multiForecastContainer">

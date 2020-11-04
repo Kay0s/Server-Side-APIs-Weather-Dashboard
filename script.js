@@ -28,7 +28,7 @@ $(document).ready(function () {
         data.coord.lat +
         "&lon=" +
         data.coord.lon +
-        "&units=imperialappid=ae091cae15863695a3bd2a2f28f74012";
+        "&units=imperial&appid=ae091cae15863695a3bd2a2f28f74012";
 
       $.ajax({
         url: query2URL,
@@ -45,3 +45,9 @@ $(document).ready(function () {
     createQuery();
   });
 });
+
+function displayCurrentWeather() {
+  let currentCity = $(".currentCity").innerText;
+  then(currentCity =>{
+   $(weather.name).innerText;
+  });

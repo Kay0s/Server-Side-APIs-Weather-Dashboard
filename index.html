@@ -19,7 +19,7 @@
     <div class="flexContainer">
       <div class="searchColumn">
         <div>Search for a City:</div>
-        <input type="text" />
+        <input type="text" id="citySearch" />
         <button class="handleCitySearch">
           <i class="fa fa-search"></i>
         </button>
@@ -30,7 +30,9 @@
       </div>
       <div class="reportColumn">
         <div class="todaysForecastContainer">
-          <h2>Current City {import from ajax} (M/DD/YYYY) icon</h2>
+          <h2>
+            Current City {import from ajax} (M/DD/YYYY) <img src="icon" />
+          </h2>
           <p>Temperature: {import from ajax}</p>
           <p>Humidity: {import from ajax}</p>
           <p>Wind Speed: {import from ajax}</p>

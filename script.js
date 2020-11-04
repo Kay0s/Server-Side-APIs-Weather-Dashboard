@@ -8,37 +8,40 @@
 // clickable view of search history, that when clicked, shows the current and future conditions for that city again
 // when the weather dashboard is opened, the last queried city and its forecast is displayed
 
-//create queryURL function
-function createQuery(cityName) {
-  let query1URL =
-    "https://api.openweathermap.org/data/2.5/weather?q=" +
-    cityName +
-    "&appid=ae091cae15863695a3bd2a2f28f74012";
-
-  $.ajax({
-    url: query1URL,
-    method: "GET",
-  }).then(function (data) {
-    console.log("I am whole data: ");
-    console.log(data);
-    let query2URL =
-      "https://api.openweathermap.org/data/2.5/onecall?lat=" +
-      data.coord.lat +
-      "&lon=" +
-      data.coord.lon +
+$(document).ready(function () {
+  //create queryURL function
+  function createQuery() {
+    let inputCity = $("#citySearch").val();
+    let query1URL =
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
+      inputCity +
       "&appid=ae091cae15863695a3bd2a2f28f74012";
 
     $.ajax({
-      url: query2URL,
+      url: query1URL,
       method: "GET",
-    }).then(function (uvExtendedData) {
-      console.log("I am uv and extended data: ");
-      console.log(uvExtendedData);
-    });
-  });
-}
+    }).then(function (data) {
+      console.log("I am whole data: ");
+      console.log(data);
+      let query2URL =
+        "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+        data.coord.lat +
+        "&lon=" +
+        data.coord.lon +
+        "&appid=ae091cae15863695a3bd2a2f28f74012";
 
-$(".handleCitySearch").on("click", function (event) {
-  event.preventDefault();
-  createQuery();
+      $.ajax({
+        url: query2URL,
+        method: "GET",
+      }).then(function (uvExtendedData) {
+        console.log("I am uv and extended data: ");
+        console.log(uvExtendedData);
+      });
+    });
+  }
+
+  $(".handleCitySearch").on("click", function (event) {
+    event.preventDefault();
+    createQuery();
+  });
 });

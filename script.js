@@ -48,6 +48,10 @@ $(document).ready(function () {
 
 function displayCurrentWeather() {
   let currentCity = $(".currentCity").innerText;
-  then(currentCity =>{
-   $(weather.name).innerText;
-  });
+  (currentCity) => {
+    $(weather.name).innerText;
+    displayCurrentWeather();
+    console.log("I am displayCurrentWeather function");
+    console.log(displayCurrentWeather);
+  };
+}

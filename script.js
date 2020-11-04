@@ -15,7 +15,7 @@ $(document).ready(function () {
     let query1URL =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       inputCity +
-      "&appid=ae091cae15863695a3bd2a2f28f74012";
+      "&units=imperial&appid=ae091cae15863695a3bd2a2f28f74012";
 
     $.ajax({
       url: query1URL,
@@ -28,7 +28,7 @@ $(document).ready(function () {
         data.coord.lat +
         "&lon=" +
         data.coord.lon +
-        "&appid=ae091cae15863695a3bd2a2f28f74012";
+        "&units=imperialappid=ae091cae15863695a3bd2a2f28f74012";
 
       $.ajax({
         url: query2URL,

@@ -66,12 +66,12 @@ p {
   border-radius: 4px;
   margin: 0 8px;
 }
-.forecastCard:first-child {
+/* .forecastCard:first-child {
   margin-left: 0;
 }
 .forecastCard:last-child {
   margin-right: 0;
-}
+} */
 
 /*0-2
 .uv-low {

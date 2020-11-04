@@ -21,7 +21,7 @@ $(document).ready(function () {
       url: query1URL,
       method: "GET",
     }).then(function (data) {
-      console.log("I am whole data: ");
+      console.log("I am current data: ");
       console.log(data);
       let query2URL =
         "https://api.openweathermap.org/data/2.5/onecall?lat=" +
@@ -36,6 +36,29 @@ $(document).ready(function () {
       }).then(function (uvExtendedData) {
         console.log("I am uv and extended data: ");
         console.log(uvExtendedData);
+        for (let index = 0; index < daily.length; index++) {
+          console.log(index);
+        }
+        uvExtendedData?.current.daily?.map((day, index) => {
+          console.log("start");
+          console.log(`0>0: ${0 > 0}`);
+          console.log(`${index}>0: ${index > 0}`);
+
+          console.log(`${index}<6:  ${index < 6}`);
+
+          if (index > 0 && index < 6) {
+            $(".forecastCardsContainer").append(
+              `
+                <div class="forecastCard" id="{'card' + index}">
+                  <h3>${moment.unix(day.dt).format("M/DD/YYYY")}</h3>
+                  <div>icon</div>
+                  <p>Temp: ${day.temp.day}°F</p>
+                  <p>Humidity: ${day.humidity}%</p>
+                </div>
+              `
+            );
+          }
+        });
       });
     });
   }
@@ -45,13 +68,3 @@ $(document).ready(function () {
     createQuery();
   });
 });
-
-function displayCurrentWeather() {
-  let currentCity = $(".currentCity").innerText;
-  (currentCity) => {
-    $(weather.name).innerText;
-    displayCurrentWeather();
-    console.log("I am displayCurrentWeather function");
-    console.log(displayCurrentWeather);
-  };
-}

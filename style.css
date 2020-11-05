@@ -33,7 +33,20 @@ p {
   border: 1 solid gray;
 }
 .searchColumn .searchHistoryContainer {
-  background-color: white;
+  background-color: #e1e1e1;
+  border: 1px solid gray;
+  border-radius: 4px;
+  margin-top: 16px;
+}
+
+.searchHistoryContainer > button {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+.searchHistoryContainer > button:last-child {
+  border: none;
 }
 
 .searchColumn > input {

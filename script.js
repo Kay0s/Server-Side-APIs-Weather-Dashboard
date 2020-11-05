@@ -9,9 +9,13 @@
 // when the weather dashboard is opened, the last queried city and its forecast is displayed
 
 $(document).ready(function () {
+  generateHistory();
+
   //create queryURL function
-  function createQuery() {
-    let inputCity = $("#citySearch").val();
+  function createQuery(city) {
+    let inputCity = city ? city : $("#citySearch").val();
+    console.log(inputCity);
+    console.log(city);
     let query1URL =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       inputCity +
@@ -110,6 +114,25 @@ $(document).ready(function () {
       return "uv-extreme";
     } else {
       return "uv-undefined";
+    }
+  }
+
+  function generateHistory() {
+    let cityHistory = ["Minneapolis", "Ramsey", "Maple Grove"];
+
+    $(".searchHistoryContainer").html("");
+    for (let cityCounter = 0; cityCounter < cityHistory.length; cityCounter++) {
+      let city = cityHistory[cityCounter];
+      $(".searchHistoryContainer").append(
+        `<button id="CityBtn${cityCounter}">${city}</button>`
+      );
+      $(".searchHistoryContainer").on(
+        "click",
+        `#CityBtn${cityCounter}`,
+        function () {
+          createQuery(city);
+        }
+      );
     }
   }
 });

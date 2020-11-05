@@ -132,7 +132,7 @@ $(document).ready(function () {
         `#CityBtn${cityCounter}`,
         function () {
           createQuery(city);
-          localStorage.setItem("cityHistory", JSON.stringify(cityHistory));
+          localStorage.setItem("city", JSON.stringify(city));
         }
       );
     }

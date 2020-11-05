@@ -66,34 +66,37 @@ p {
   border-radius: 4px;
   margin: 0 8px;
 }
-/* .forecastCard:first-child {
+.forecastCard:first-child {
   margin-left: 0;
 }
 .forecastCard:last-child {
   margin-right: 0;
-} */
-
-/*0-2
-.uv-low {
-span-color: green;
 }
 
-/*3-5
+.uv-favorable,
+.uv-moderate,
+.uv-extreme,
+.uv-undefined {
+  font-weight: bold;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+/*< 4*/
+.uv-favorable {
+  background-color: rgb(43, 194, 43);
+}
+
+/*4-10*/
 .uv-moderate {
-span-color: yellow;
+  background-color: yellow;
 }
 
-/*6-7
-.uv-high {
-span-color: orange;
-}
-
-/*8-10
-.uv-vhigh {
-span-color: red;
-}
-
-/*>11
+/*>11*/
 .uv-extreme {
-span-color: purple;
+  background-color: rgb(255, 148, 148);
+}
+
+.uv-undefined {
+  background-color: gray;
 }

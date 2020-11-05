@@ -3,7 +3,7 @@
 //display current and future conditions for queried city
 //and that city is added to the search history
 //on city search present city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-//present color coding for uv index indicating whether the ocnditions are favorable, moderate or severe
+//present color coding for uv index indicating whether the conditions are favorable, moderate or severe
 // display 5-day forecast of queried city that indicates the date, an icon representation of weather conditions future weather conditions, the temperature, and the humidity for the queried city
 // clickable view of search history, that when clicked, shows the current and future conditions for that city again
 // when the weather dashboard is opened, the last queried city and its forecast is displayed
@@ -36,16 +36,49 @@ $(document).ready(function () {
       }).then(function (uvExtendedData) {
         console.log("I am uv and extended data: ");
         console.log(uvExtendedData);
-        for (let index = 0; index < daily.length; index++) {
-          console.log(index);
-        }
-        uvExtendedData?.current.daily?.map((day, index) => {
-          console.log("start");
-          console.log(`0>0: ${0 > 0}`);
-          console.log(`${index}>0: ${index > 0}`);
+        $(".reportColumn").html("");
 
-          console.log(`${index}<6:  ${index < 6}`);
+        $(".reportColumn").append(
+          '<div class="todaysForecastContainer"></div>'
+        );
 
+        $(".todaysForecastContainer").append(
+          `<h2 class="currentCity">Current City ${
+            data.name
+          } <span class="currentCityDate">(${moment
+            .unix(uvExtendedData?.current?.dt)
+            .format(
+              "M/DD/YYYY"
+            )})</span><!-- <img class="currentCityIcon" src="icon" /> --></h2>`
+        );
+
+        $(".todaysForecastContainer").append(
+          `<p class="currentCityTemp">Temperature: ${uvExtendedData.current.temp}</p>`
+        );
+
+        $(".todaysForecastContainer").append(
+          `<p class="currentCityHumidity">Humidity: ${uvExtendedData.current.humidity}</p>`
+        );
+
+        $(".todaysForecastContainer").append(
+          `<p class="currentCityWindSpeed">Wind Speed: ${uvExtendedData.current.wind_speed}</p>`
+        );
+
+        $(".todaysForecastContainer").append(
+          `<p>
+          UV Index:
+          <span class="${uivClassName(uvExtendedData.current.uvi)}"
+            >${uvExtendedData.current.uvi}</span
+          >
+        </p>`
+        );
+
+        $(".reportColumn").append('<div class="multiForecastContainer"></div>');
+        $(".multiForecastContainer").append("<h2>5-Day Forecast:</h2>");
+        $(".multiForecastContainer").append(
+          '<div class="forecastCardsContainer"></div>'
+        );
+        uvExtendedData?.daily?.map((day, index) => {
           if (index > 0 && index < 6) {
             $(".forecastCardsContainer").append(
               `
@@ -67,4 +100,16 @@ $(document).ready(function () {
     event.preventDefault();
     createQuery();
   });
+
+  function uivClassName(uvi) {
+    if (uvi < 4) {
+      return "uv-favorable";
+    } else if ((uvi) => 4 && uvi <= 10) {
+      return "uv-moderate";
+    } else if (uvi > 11) {
+      return "uv-extreme";
+    } else {
+      return "uv-undefined";
+    }
+  }
 });

@@ -119,6 +119,7 @@ $(document).ready(function () {
 
   function generateHistory() {
     let cityHistory = ["Minneapolis", "Ramsey", "Maple Grove"];
+    cityHistory.push();
 
     $(".searchHistoryContainer").html("");
     for (let cityCounter = 0; cityCounter < cityHistory.length; cityCounter++) {
@@ -131,6 +132,7 @@ $(document).ready(function () {
         `#CityBtn${cityCounter}`,
         function () {
           createQuery(city);
+          localStorage.setItem("cityHistory", JSON.stringify(cityHistory));
         }
       );
     }

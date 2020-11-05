@@ -103,6 +103,7 @@ $(document).ready(function () {
   $(".handleCitySearch").on("click", function (event) {
     event.preventDefault();
     createQuery();
+    localStorage.setItem("inputCity", JSON.stringify(inputCity));
   });
 
   function uivClassName(uvi) {

@@ -10,6 +10,22 @@
 
 $(document).ready(function () {
   generateHistory();
+  $(".handleCitySearch").on("click", function (event) {
+    event.preventDefault();
+    console.log("WOO");
+    createQuery();
+    let inputCity = $("#citySearch").val();
+
+    // get list of cities from local storage
+    let cityArray = JSON.parse(localStorage.getItem("inputCity"));
+
+    // add inputCity to list
+    cityArray.push(inputCity);
+
+    console.log("Setting?", cityArray);
+    // re-save list of cities TO local storage
+    localStorage.setItem("inputCity", JSON.stringify(cityArray));
+  });
 
   //create queryURL function
   function createQuery(city) {
@@ -100,12 +116,14 @@ $(document).ready(function () {
     });
   }
 
-  $(".handleCitySearch").on("click", function (event) {
-    event.preventDefault();
-    createQuery();
-    localStorage.setItem("inputCity", JSON.stringify(inputCity));
-  });
-
+  // function itWorks () {
+  //   $(".handleCitySearch").on("click", function (event) {
+  //   event.preventDefault();
+  //   createQuery();
+  //   localStorage.setItem("inputCity", JSON.stringify(inputCity));
+  //   inputCity.push();
+  //   });
+  // }
   function uivClassName(uvi) {
     if (uvi < 4) {
       return "uv-favorable";
@@ -119,8 +137,9 @@ $(document).ready(function () {
   }
 
   function generateHistory() {
-    let cityHistory = ["Minneapolis", "Ramsey", "Maple Grove"];
-    cityHistory.push();
+    //let cityHistory = ["Minneapolis", "Ramsey", "Maple Grove"];
+    // get cityHistory from local storage
+    let cityHistory = JSON.parse(localStorage.getItem("inputCity"));
 
     $(".searchHistoryContainer").html("");
     for (let cityCounter = 0; cityCounter < cityHistory.length; cityCounter++) {

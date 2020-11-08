@@ -1,13 +1,3 @@
-// weather dashboard with form inputs
-//create search box
-//display current and future conditions for queried city
-//and that city is added to the search history
-//on city search present city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-//present color coding for uv index indicating whether the conditions are favorable, moderate or severe
-// display 5-day forecast of queried city that indicates the date, an icon representation of weather conditions future weather conditions, the temperature, and the humidity for the queried city
-// clickable view of search history, that when clicked, shows the current and future conditions for that city again
-// when the weather dashboard is opened, the last queried city and its forecast is displayed
-
 //on page load display last searched city
 $(document).ready(function () {
   generateHistory();
@@ -73,10 +63,10 @@ $(document).ready(function () {
         console.log(uvExtendedData);
 
         //create weatherIcon variable to display the weather icon from One Call API - uvExtendedData.current.weather[0].icon
-        //+ "http://openweathermap.org/img/wn/" (the URL for the Open Weather weather icon images)
+        //+ "https://openweathermap.org/img/wn/" (the URL for the Open Weather weather icon images)
         let weatherIcon = uvExtendedData.current.weather[0].icon;
         let iconURL =
-          "http://openweathermap.org/img/wn/" + weatherIcon + ".png";
+          "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
 
         //create todaysForecastContainer (container with appended divs)
         $(".reportColumn").html("");
@@ -137,7 +127,7 @@ $(document).ready(function () {
               `
                 <div class="forecastCard" id="{'card' + index}">
                   <h3>${moment.unix(day.dt).format("M/DD/YYYY")}</h3>
-                  <div><img id="weatherIcon" src="http://openweathermap.org/img/wn/${
+                  <div><img id="weatherIcon" src="https://openweathermap.org/img/wn/${
                     day.weather[0].icon
                   }.png"/></div>
                   <p>Temp: ${day.temp.day + " &deg;F"}</p>

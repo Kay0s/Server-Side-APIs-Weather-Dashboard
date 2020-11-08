@@ -8,39 +8,49 @@
 // clickable view of search history, that when clicked, shows the current and future conditions for that city again
 // when the weather dashboard is opened, the last queried city and its forecast is displayed
 
+//on page load display last searched city
 $(document).ready(function () {
   generateHistory();
+  let lastSearched = JSON.parse(localStorage.getItem("inputCity"));
+  console.log("hello", lastSearched);
+  if (lastSearched.length > 0) {
+    //check to see if city history in in local
+    //if in local get last searched city
+    let lastCity = lastSearched[lastSearched.length - 1];
+    //display last searched city's weather onload
+    createQuery(lastCity);
+  }
+  //on click handler for createQuery();, so when user enters city in text box and clicks sumbit, the inputCity value
+  //is taken from the input field $(#citySearch).val();
   $(".handleCitySearch").on("click", function (event) {
     event.preventDefault();
-    console.log("WOO");
     createQuery();
     let inputCity = $("#citySearch").val();
 
-    // get list of cities from local storage
+    // get list of cities from local storage and if data doesn't exist then create an empty array
     let cityArray = JSON.parse(localStorage.getItem("inputCity")) || [];
 
     // add inputCity to list
     cityArray.push(inputCity);
 
-    console.log("Setting?", cityArray);
     // re-save list of cities TO local storage
     localStorage.setItem("inputCity", JSON.stringify(cityArray));
     generateHistory();
   });
 
-  //create queryURL function
+  //create queryURL function - the Value of inputCity, could be the city history, could be the search input. depends on which clicked
   function createQuery(city) {
     let inputCity = city ? city : $("#citySearch").val();
-    console.log(
-      "Value of inputCity, could be the city history, could be the search input. depends on which you clicked: " +
-        inputCity
-    );
+
+    //query1URL is Current Weather Data API + the city searched (inputCity) from the input field
     console.log("City passed from city history clicked: " + city);
     let query1URL =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       inputCity +
       "&units=imperial&appid=ae091cae15863695a3bd2a2f28f74012";
 
+    //first AJAX call to Current Weather Data API, to obtain the city name (data)
+    //query2URL variable is One Call API + lat and long from Current Weather Data API
     $.ajax({
       url: query1URL,
       method: "GET",
@@ -54,21 +64,27 @@ $(document).ready(function () {
         data.coord.lon +
         "&units=imperial&appid=ae091cae15863695a3bd2a2f28f74012";
 
+      //second AJAX call to One Call API, to obtain the extended forecast and UV index
       $.ajax({
         url: query2URL,
         method: "GET",
       }).then(function (uvExtendedData) {
         console.log("I am uv and extended data: ");
         console.log(uvExtendedData);
+
+        //create weatherIcon variable to display the weather icon from One Call API - uvExtendedData.current.weather[0].icon
+        //+ "http://openweathermap.org/img/wn/" (the URL for the Open Weather weather icon images)
         let weatherIcon = uvExtendedData.current.weather[0].icon;
         let iconURL =
           "http://openweathermap.org/img/wn/" + weatherIcon + ".png";
+
+        //create todaysForecastContainer (container with appended divs)
         $(".reportColumn").html("");
 
         $(".reportColumn").append(
           '<div class="todaysForecastContainer"></div>'
         );
-
+        //append div to todaysForecastContainer to display current queried city name and weather icon, current date, humdity,
         $(".todaysForecastContainer").append(
           `<h2 class="currentCity">Current City ${
             data.name
@@ -139,7 +155,6 @@ $(document).ready(function () {
   }
 
   function generateHistory() {
-    //let cityHistory = ["Minneapolis", "Ramsey", "Maple Grove"];
     // get cityHistory from local storage
     let cityHistory = JSON.parse(localStorage.getItem("inputCity"));
     //if search history doesn't exist, then create searched city button

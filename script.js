@@ -13,7 +13,7 @@ $(document).ready(function () {
   generateHistory();
   let lastSearched = JSON.parse(localStorage.getItem("inputCity"));
   console.log("hello", lastSearched);
-  if (lastSearched.length > 0) {
+  if (lastSearched?.length > 0) {
     //check to see if city history in in local
     //if in local get last searched city
     let lastCity = lastSearched[lastSearched.length - 1];

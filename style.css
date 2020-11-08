@@ -10,6 +10,10 @@ h1 {
   color: white;
   font-family: sans-serif;
 }
+.handleCitySearch {
+  background-color: rgb(73, 133, 237);
+}
+
 h2 {
   font-size: 20px;
 }

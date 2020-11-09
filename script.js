@@ -2,7 +2,6 @@
 $(document).ready(function () {
   generateHistory();
   let lastSearched = JSON.parse(localStorage.getItem("inputCity"));
-  console.log("hello", lastSearched);
   if (lastSearched?.length > 0) {
     //check to see if city history in in local
     //if in local get last searched city
@@ -10,7 +9,7 @@ $(document).ready(function () {
     //display last searched city's weather onload
     createQuery(lastCity);
   }
-  //on click handler for createQuery();, so when user enters city in text box and clicks sumbit, the inputCity value
+  //on click handler for createQuery();, so when user enters city in text box and clicks submit, the inputCity value
   //is taken from the input field $(#citySearch).val();
   $(".handleCitySearch").on("click", function (event) {
     event.preventDefault();
@@ -122,7 +121,6 @@ $(document).ready(function () {
         //.map to display current queried city's 5 Day Forecast: date, weather icon, temperature and humidity
         uvExtendedData?.daily?.map((day, index) => {
           if (index > 0 && index < 6) {
-            console.log(day.weather[0].icon);
             $(".forecastCardsContainer").append(
               `
                 <div class="forecastCard" id="{'card' + index}">
@@ -157,12 +155,12 @@ $(document).ready(function () {
   function generateHistory() {
     // get cityHistory from local storage
     let cityHistory = JSON.parse(localStorage.getItem("inputCity"));
-    //if search history doesn't exist, then create searched city button
+    //if search history doesn't exist, then create .searchHistoryContainer
     if (!$(".searchHistoryContainer")?.length && cityHistory?.length) {
       $(".searchColumn").append('<div class="searchHistoryContainer"></div>');
     }
 
-    //clear the searchHistoryContainer if no search history exists in local storage
+    //clear the searchHistoryContainer
     $(".searchHistoryContainer").html("");
     //for loop to create CityBtn(s) (searched city button(s))
     for (

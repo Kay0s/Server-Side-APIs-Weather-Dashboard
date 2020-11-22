@@ -59,6 +59,14 @@ Through information and feedback provided by the traveler who is traveling to mu
 - The 5-day forecast humidities are otbained from (day.humidity).
 - When the traveler refreshes the application, the saved city(cities) persist as clickable button(s) and the last searched city's current weather information is presented, due to the retrieval of data from local storage and subtracting one from the retrieved array.
   - Since the traveler's searched city(cities) will be generated from an input, JSON.parse and JSON.strigify are used to set and retrieve the searched city(cities) from the client side local storage.
+  
+ ## Tools Used
+- HTML
+- CSS
+- JQuery
+- OpenWeather - Current Weather Data API
+- OpenWeather - Once Call API
+- Moment.js
 
 ## Deployed Website and JQuery Code with AJAX calls
 
